@@ -2,22 +2,28 @@
 #define GAME_H
 
 #include <random>
+#include <vector>
+#include <string>
 #include "SDL.h"
 #include "controller.h"
 #include "renderer.h"
 #include "snake.h"
+#include "food.h"
 
-class Game {
- public:
+class Game
+{
+public:
   Game(std::size_t grid_width, std::size_t grid_height);
   void Run(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
 
- private:
+  const std::string key_mapping_file{"../config/keymappings"};
+
+private:
   Snake snake;
-  SDL_Point food;
+  Food food;
 
   std::random_device dev;
   std::mt19937 engine;
@@ -28,6 +34,7 @@ class Game {
 
   void PlaceFood();
   void Update();
+  std::vector<SDL_Keycode> ReadKeys(std::string character);
 };
 
 #endif
