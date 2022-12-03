@@ -45,8 +45,33 @@ This work is licensed under a
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
 
+## Capstone Project Changes
+For my capstone project, I have extended the simple Snake game into a head-to-head, two player challenge.
+The piece of food is now a playable character. The goal of the game is now for the snake to eat the food and for the food to escape the snake.
+The snake is awarded a point for each time it successfully eats the food. The food is awarded a point for every 10 seconds it avaids the snake. Each character will speed up as they collect more points.
+The game still ends when the snake collides with itself or when the user manually quits.
 
-
-TODO
-- food scoring (thread with counter?)
-- load keymappings
+## Rubric Points Met
+* The project reads data from a file and process the data, or the program writes data to a file.
+  * Key bindings for each character can be set in the file config/keymappings. The file is read and parsed on start up of the game and assigns as many or as few keys are specified by the config file.
+  * By default both characters will use the arrow keys for movement.
+  * Future work: 
+    * Checks to be added to throw an error if both characters have the same key set
+    * A method to change the key bindings without needing to restart the game
+    * Error handling for if an invalid key is set or bad file input
+* The project accepts user input and processes the input.
+  * Controller.cpp was changed in such a way that it can accept and process user input from a dynamic set of keys, as long as they are assinged to one of the characters on start up (see point 1).
+* Classes follow an appropriate inheritance hierarchy.
+  * Since there are now two types of characters, the generic character class was introduced to encapsulate the generic character attributes and functions.
+  * Snake and Food classes extend the Character class to share the common functionaility of knowing the direction they are headed, their current head coordinate, speed, and key bindings. 
+* Overloaded functions allow the same function to operate on different parameters.
+  * The Character class has two constructors. One for if the default keys are to be set and one for if custom keys are set.
+* Derived class functions override virtual base class functions.
+  * The Character class contains the virtual functions Update() and PointEarned() for each of its child classes to implement. 
+  * For Update(), the Snake class needs to redraws both the head and the body of the snake when the direction changes, while the Food only needs to update the head location.
+  * For PointEarned(), the Snake needs to grow its body, increase its points, and increase its speed. The food only needs to increase its points and its speed.
+* Class constructors utilize member initialization lists.
+  * The Character, Snake, and Food classes each utilize member initialization lists in their constructors where appropriate.
+* Classes encapsulate behavior.
+  * Each character now holds its own score counter instead of the Game class handling this counter.
+  * The Game class collects the score from each player character to display at the top of the game window and print to the console at the end of the game.

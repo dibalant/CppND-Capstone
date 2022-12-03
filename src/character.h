@@ -31,7 +31,16 @@ public:
           key_left(SDLK_LEFT),
           key_right(SDLK_RIGHT) {}
 
-    void Update();
+    virtual ~Character() = default;
+
+    virtual void Update() {}
+
+    virtual void PointEarned() {}
+
+    int GetScore() const
+    {
+        return score;
+    }
 
     Direction direction = Direction::kUp;
 
@@ -48,5 +57,7 @@ public:
 protected:
     int grid_width;
     int grid_height;
+    int score{0};
+    const float speed_increase_interval = 0.02;
 };
 #endif

@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/workspace/CppND-Capstone/src/character.cpp" "/home/workspace/CppND-Capstone/build/CMakeFiles/SnakeGame.dir/src/character.cpp.o"
   "/home/workspace/CppND-Capstone/src/controller.cpp" "/home/workspace/CppND-Capstone/build/CMakeFiles/SnakeGame.dir/src/controller.cpp.o"
+  "/home/workspace/CppND-Capstone/src/food.cpp" "/home/workspace/CppND-Capstone/build/CMakeFiles/SnakeGame.dir/src/food.cpp.o"
   "/home/workspace/CppND-Capstone/src/game.cpp" "/home/workspace/CppND-Capstone/build/CMakeFiles/SnakeGame.dir/src/game.cpp.o"
   "/home/workspace/CppND-Capstone/src/main.cpp" "/home/workspace/CppND-Capstone/build/CMakeFiles/SnakeGame.dir/src/main.cpp.o"
   "/home/workspace/CppND-Capstone/src/renderer.cpp" "/home/workspace/CppND-Capstone/build/CMakeFiles/SnakeGame.dir/src/renderer.cpp.o"

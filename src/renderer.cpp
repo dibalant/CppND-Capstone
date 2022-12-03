@@ -8,7 +8,8 @@ Renderer::Renderer(const std::size_t screen_width,
     : screen_width(screen_width),
       screen_height(screen_height),
       grid_width(grid_width),
-      grid_height(grid_height) {
+      grid_height(grid_height)
+{
   // Initialize SDL
   if (SDL_Init(SDL_INIT_VIDEO) < 0)
   {
@@ -86,8 +87,8 @@ void Renderer::Render(Snake const snake, Food const &food)
   SDL_RenderPresent(sdl_renderer);
 }
 
-void Renderer::UpdateWindowTitle(int score, int fps)
+void Renderer::UpdateWindowTitle(int snake_score, int food_score, int fps)
 {
-  std::string title{"Snake Score: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
+  std::string title{"Snake Score: " + std::to_string(snake_score) + " Food Score: " + std::to_string(food_score) + " FPS: " + std::to_string(fps)};
   SDL_SetWindowTitle(sdl_window, title.c_str());
 }

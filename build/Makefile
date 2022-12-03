@@ -123,33 +123,6 @@ SnakeGame/fast:
 	$(MAKE) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/build
 .PHONY : SnakeGame/fast
 
-src/character.o: src/character.cpp.o
-
-.PHONY : src/character.o
-
-# target to build an object file
-src/character.cpp.o:
-	$(MAKE) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/character.cpp.o
-.PHONY : src/character.cpp.o
-
-src/character.i: src/character.cpp.i
-
-.PHONY : src/character.i
-
-# target to preprocess a source file
-src/character.cpp.i:
-	$(MAKE) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/character.cpp.i
-.PHONY : src/character.cpp.i
-
-src/character.s: src/character.cpp.s
-
-.PHONY : src/character.s
-
-# target to generate assembly for a file
-src/character.cpp.s:
-	$(MAKE) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/character.cpp.s
-.PHONY : src/character.cpp.s
-
 src/controller.o: src/controller.cpp.o
 
 .PHONY : src/controller.o
@@ -176,6 +149,33 @@ src/controller.s: src/controller.cpp.s
 src/controller.cpp.s:
 	$(MAKE) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/controller.cpp.s
 .PHONY : src/controller.cpp.s
+
+src/food.o: src/food.cpp.o
+
+.PHONY : src/food.o
+
+# target to build an object file
+src/food.cpp.o:
+	$(MAKE) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/food.cpp.o
+.PHONY : src/food.cpp.o
+
+src/food.i: src/food.cpp.i
+
+.PHONY : src/food.i
+
+# target to preprocess a source file
+src/food.cpp.i:
+	$(MAKE) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/food.cpp.i
+.PHONY : src/food.cpp.i
+
+src/food.s: src/food.cpp.s
+
+.PHONY : src/food.s
+
+# target to generate assembly for a file
+src/food.cpp.s:
+	$(MAKE) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/food.cpp.s
+.PHONY : src/food.cpp.s
 
 src/game.o: src/game.cpp.o
 
@@ -294,12 +294,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... SnakeGame"
 	@echo "... edit_cache"
-	@echo "... src/character.o"
-	@echo "... src/character.i"
-	@echo "... src/character.s"
 	@echo "... src/controller.o"
 	@echo "... src/controller.i"
 	@echo "... src/controller.s"
+	@echo "... src/food.o"
+	@echo "... src/food.i"
+	@echo "... src/food.s"
 	@echo "... src/game.o"
 	@echo "... src/game.i"
 	@echo "... src/game.s"

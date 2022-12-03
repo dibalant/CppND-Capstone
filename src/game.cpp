@@ -48,7 +48,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // After every second, update the window title.
     if (frame_end - title_timestamp >= 1000)
     {
-      renderer.UpdateWindowTitle(score, frame_count);
+      renderer.UpdateWindowTitle(snake.GetScore(), food.GetScore(), frame_count);
       frame_count = 0;
       title_timestamp = frame_end;
     }
@@ -76,6 +76,7 @@ void Game::PlaceFood()
     {
       food.head_x = x;
       food.head_y = y;
+      food_updated_time = std::chrono::system_clock::now();
       return;
     }
   }
@@ -98,16 +99,36 @@ void Game::Update()
   // Check if snake caught the food
   if (new_snake_x == new_food_x && new_snake_y == new_food_y)
   {
-    score++;
-    //PlaceFood();
-    // Grow snake and increase speed.
-    snake.GrowBody();
-    snake.speed += 0.02;
+    snake.PointEarned();
+    PlaceFood();
+  }
+
+  // Check if food has avaided the snake for long enough
+  long foodUpdateDuration = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now() - food_updated_time).count();
+  if (foodUpdateDuration >= food_score_duration)
+  {
+    food.PointEarned();
+    food_updated_time = std::chrono::system_clock::now();
   }
 }
 
-int Game::GetScore() const { return score; }
-int Game::GetSize() const { return snake.size; }
+void Game::GetFinalStats()
+{
+  int snake_score = snake.GetScore();
+  int food_score = food.GetScore();
+  if (snake_score == food_score)
+  {
+    std::cout << "Its a tie!\n";
+  }
+  else
+  {
+    string winner = (snake_score > food_score) ? "Snake" : "Food";
+    std::cout << "The winner is... " << winner << "!\n";
+  }
+  std::cout << "Food Score: " << food_score << "\n";
+  std::cout << "Snake Score: " << snake_score << "\n";
+  std::cout << "Snake Size: " << snake.size << "\n";
+}
 
 vector<SDL_Keycode> Game::ReadKeys(string character)
 {

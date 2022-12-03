@@ -21,7 +21,9 @@ public:
   }
 
   void Update();
-  void GrowBody();
+
+  void PointEarned();
+
   bool SnakeCell(int x, int y);
 
   std::vector<SDL_Point> body;
@@ -31,6 +33,7 @@ public:
 private:
   void UpdateHead();
   void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
+  void GrowBody();
 
   bool growing{false};
 };
